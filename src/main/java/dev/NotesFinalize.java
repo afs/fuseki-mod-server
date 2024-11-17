@@ -18,28 +18,9 @@
 
 package dev;
 
-import org.apache.jena.fuseki.main.FusekiServer;
-import org.apache.jena.fuseki.system.FusekiLogging;
-import org.apache.jena.irix.SystemIRIx;
-import org.apache.jena.sparql.core.DatasetGraph;
-import org.apache.jena.sparql.core.DatasetGraphFactory;
-import org.apache.jena.sys.JenaSystem;
-
-public class RunFusekiUI {
-
-    static {
-        System.getProperties().setProperty(SystemIRIx.sysPropertyProvider, "IRI3986");
-        JenaSystem.init();
-        FusekiLogging.setLogging();
-    }
-
-    public static void main(String ... a) {
-        //FusekiModules.add(new FMod_UI());
-        DatasetGraph dsg = DatasetGraphFactory.createTxnMem();
-        FusekiServer server = FusekiServer.create()
-                .add("/ds", dsg)
-                .port(3030)
-                .build()
-                .start();
-    }
+public class NotesFinalize {
+    /*
+     * Look for XXX and TODO
+     * Move command to org.apache.jena.fuseki.main.cmds
+     */
 }

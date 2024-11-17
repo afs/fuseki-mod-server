@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.jena.atlas.logging.FmtLog;
-import org.apache.jena.cmd.ArgModuleGeneral;
+import org.apache.jena.cmd.CmdGeneral;
 import org.apache.jena.fuseki.Fuseki;
 import org.apache.jena.fuseki.build.FusekiConfig;
 import org.apache.jena.fuseki.ctl.ActionCtl;
 import org.apache.jena.fuseki.main.FusekiServer;
-import org.apache.jena.fuseki.main.cmds.FusekiMain;
+import org.apache.jena.fuseki.main.cmds.ServerArgs;
 import org.apache.jena.fuseki.main.sys.FusekiAutoModule;
 import org.apache.jena.fuseki.main.sys.FusekiModule;
 import org.apache.jena.fuseki.mgt.ActionBackup;
@@ -50,9 +50,13 @@ public class FMod_Admin implements FusekiAutoModule {
     private static Logger LOG = Fuseki.configLog;
 
     @Override
+    public void serverArgsModify(CmdGeneral fusekiCmd, ServerArgs serverArgs) { }
+    @Override
+    public void serverArgsPrepare(CmdGeneral fusekiCmd, ServerArgs serverArgs) { }
+    //public default void serverArgsBuilder(FusekiServer.Builder serverBuilder, Model configModel) {}
+
+    @Override
     public void start() {
-        ArgModuleGeneral amg = new ArgModuleAdmin();
-        FusekiMain.addArgModule(amg);
     }
 
     // Modules add command line args?

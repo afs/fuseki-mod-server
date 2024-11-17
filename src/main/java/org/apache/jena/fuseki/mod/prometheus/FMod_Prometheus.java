@@ -24,6 +24,7 @@ import org.apache.jena.fuseki.Fuseki;
 import org.apache.jena.fuseki.ctl.ActionMetrics;
 import org.apache.jena.fuseki.main.FusekiServer;
 import org.apache.jena.fuseki.main.sys.FusekiAutoModule;
+import org.apache.jena.fuseki.main.sys.FusekiModule;
 import org.apache.jena.fuseki.metrics.MetricsProviderRegistry;
 import org.apache.jena.rdf.model.Model;
 
@@ -33,6 +34,14 @@ import org.apache.jena.rdf.model.Model;
  * PrometheusMetricsProvider
  */
 public class FMod_Prometheus implements FusekiAutoModule {
+
+    private static FusekiModule singleton = new FMod_Prometheus();
+    public static FusekiModule get() {
+        return singleton;
+    }
+
+    public FMod_Prometheus() {}
+
     @Override
     public String name() { return "FMod Prometheus Metrics"; }
 

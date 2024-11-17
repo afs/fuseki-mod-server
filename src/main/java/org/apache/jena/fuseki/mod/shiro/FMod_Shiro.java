@@ -32,6 +32,7 @@ import org.apache.jena.fuseki.Fuseki;
 import org.apache.jena.fuseki.FusekiConfigException;
 import org.apache.jena.fuseki.main.FusekiServer;
 import org.apache.jena.fuseki.main.sys.FusekiAutoModule;
+import org.apache.jena.fuseki.main.sys.FusekiModule;
 import org.apache.jena.rdf.model.Model;
 import org.apache.shiro.web.servlet.ShiroFilter;
 import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
@@ -43,6 +44,12 @@ import org.slf4j.LoggerFactory;
  * Fuseki Module for Apache Shiro
  */
 public class FMod_Shiro implements FusekiAutoModule {
+
+    private static FusekiModule singleton = new FMod_Shiro();
+    public static FusekiModule get() {
+        return singleton;
+    }
+
     // Assumes the whole system is "Shiro".
     // No setup?
 
@@ -55,6 +62,8 @@ public class FMod_Shiro implements FusekiAutoModule {
     public static void setShiroIniLocations(List<String> shiroIniLocations) {
         iniFileLocations = shiroIniLocations;
     }
+
+    public FMod_Shiro() {}
 
     /* In jena-fuseki-webapp (WAR file) and jena-fuseki-full-jar:
      *   FUSEKI_HOME - used to find "webapp"

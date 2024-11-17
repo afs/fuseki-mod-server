@@ -22,6 +22,13 @@ import java.util.concurrent.atomic.LongAdder;
 
 public class NotesFusekiModServer {
 
+    // No shiro.ini in /run.
+    // No tasks
+    // No testing/config-*
+    // No /$/datasets
+    // Store configuration file before assembler additions.
+    // Static resources
+
     static public class Counter2 {
         // Not for synchronization
         private LongAdder counter = new LongAdder();
@@ -38,13 +45,15 @@ public class NotesFusekiModServer {
         }
     }
 
+
     // 1Fuseki v1
-    //  in jena-fuseki-main : org.apache.jena.fuseki.fmods
-    //  FMod_UI
-    //  FMod_Admin
-    //  FMod_Shiro
-    //  (FMod_GeoSPARQL)
-    //  FMod_Prometheus
+    //   in jena-fuseki-main : org.apache.jena.fuseki.fmods
+    //   FMod_UI
+    //   FMod_Admin
+    //   FMod_Shiro
+    //   (FMod_GeoSPARQL)
+    //   FMod_Prometheus
+    //   FMod_localhost.
 
 
     // Copy template files.
